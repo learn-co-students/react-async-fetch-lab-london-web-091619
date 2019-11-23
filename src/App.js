@@ -1,30 +1,25 @@
-// create your App component here
 import React, {Component} from 'react'
 
-export default class App extends Component { 
+export default class App extends Component {
 
-    state = { 
-        space : [] 
+    state = {
+        astros: []
     }
 
 
-    fetchSpacePeople = () => { 
+    fetchSpacePeople = () => {
         fetch('http://api.open-notify.org/astros.json')
-        .then(resp => resp.json())
-        .then(space = this.setState({space: space})
+            .then(resp => resp.json())
+            .then(astros => this.setState({astros:astros}))
     }
 
-    componentDidMount() { 
+    componentDidMount(){
         this.fetchSpacePeople()
     }
 
-   
-    render () { 
-
-        const space = this.state
-
-        return <div>{space}</div>
+    render(){
+        return <div>{this.state.astros}</div>
     }
-
 }
+
 
